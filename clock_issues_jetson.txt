@@ -1,0 +1,20 @@
+First, while the robot system time is correct:
+date -u
+sudo hwclock --rtc=/dev/rtc0 --systohc --utc
+sudo hwclock --rtc=/dev/rtc0 --show --utc
+
+The time should be the current time, you cna get this by connecting the robot to a network with internet
+
+Then shut down:
+
+sudo poweroff
+
+Disconnect all primary power for approximately 5–10 minutes. Boot the robot without connecting it to the station/network, then immediately run:
+
+date -u
+sudo hwclock --rtc=/dev/rtc0 --show --utc
+sudo dmesg | grep -i -E 'rtc|setting system clock'
+
+
+
+You can then use the commands for enable_chrony, restart_chrony and check_chrony
